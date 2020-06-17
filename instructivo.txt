@@ -1,0 +1,19 @@
+
+# Cerrar todos los dockers activos
+docker stop $(docker ps -a -q)
+
+# Chequear  la red de Docker que se usará para conectar los contenedores entre sí
+docker network ls | grep mysql-net
+
+# Si lo anterior no da info
+docker network create --driver bridge mysql-net
+
+# Ejecutar contenedor con la DB
+./start_mysql.sh mysql-net "$PWD"/db
+
+# Correr gestor de DB PHPMyAdmin conectandolo a la red Docker, el servidor y puerto.
+./run_phpadmin.sh mysql-net mysql-server 8085
+http://localhost:8085
+
+# Ejecutar el servidor de NodeJS con la aplicacion creada con index.js como entry point corriendo en 8000 y sobre la red mysql-net.
+./serve_node_app_net.sh "$PWD" ws/index.js 8000 mysql-net
