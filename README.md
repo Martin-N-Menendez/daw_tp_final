@@ -1,6 +1,6 @@
 Autor: Martín N. Menéndez - 2020
 # Introduccion
-El proyecto es ...
+El proyecto es ... (PRUEBA...)
 # Correr la aplicación
 Para correr la aplicación es necesario ejecutar el siguiente comando:
 ```sh
