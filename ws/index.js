@@ -6,7 +6,11 @@ app.use(express.json()); // para parsear application/json
 app.use(express.static('.')); // para servir archivos estaticos
 
 
-//EJ 12
+// Tipo = 0 -> nada
+// Tipo = 1 -> lamparas (en el json figuran como tipo 0)
+// Tipo = 2 -> persianas (n el json figuran como tipo 1)
+
+
 app.get('/devices', function(req, res, next) {
     mysql.query('SELECT * FROM Devices', function(err, rta, field) {
         if (err) {
@@ -17,14 +21,45 @@ app.get('/devices', function(req, res, next) {
     });
 });
 app.get('/devices/:id', function(req, res, next) {
-    mysql.query('SELECT * FROM Devices WHERE id=?', [req.params.id], function(err, rta, field) {
+    mysql.query('SELECT * FROM Devices WHERE id=?', [req.params.id], function(error, respuesta, field) {
+        if (error) {
+            res.send(error).status(400);
+            return;
+        }
+        res.send(respuesta);
+    });
+});
+
+app.get('/lamparas', function (req, res, next) {
+    mysql.query('SELECT * FROM Devices WHERE type=0', function (err, rta, field) {
         if (err) {
             res.send(err).status(400);
             return;
         }
-        res.send(rta);
+        res.send(rta).status(200);
     });
 });
+
+app.get('/persianas', function (req, res, next) {
+    mysql.query('SELECT * FROM Devices WHERE type=1', function (err, rta, field) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(rta).status(200);
+    });
+});
+
+app.get('/veladores', function (req, res, next) {
+    mysql.query('SELECT * FROM Devices WHERE type=2', function (err, rta, field) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(rta).status(200);
+    });
+});
+
 app.post('/devices', function(req, res, next) {
 
     console.log(req.body);

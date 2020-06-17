@@ -18,13 +18,13 @@ class ViewMainPage {
                                 <p>" + list[i].description + "<br> \
                                 </p> \
                                 <a href='#!' class='secondary-content'> <div class='switch'> \
-                                                                            <label> \
-                                                                            Off \
-                                                                            <input type='checkbox' id='dev_" + list[i].id + "' " + checkedStr + "> \
-                                                                            <span class='lever'></span> \
-                                                                            On \
-                                                                            </label> \
-                                                                        </div></a> \
+                                <label> \
+                                Off \
+                                <input type='checkbox' id='dev_" + list[i].id + "' " + checkedStr + "> \
+                                <span class='lever'></span> \
+                                On \
+                                </label> \
+                            </div></a> \
                             </li>";
                     break;
                 case 1: // Persiana                    
@@ -34,13 +34,29 @@ class ViewMainPage {
                                 <p>" + list[i].description + "<br> \
                                 </p> \
                                 <a href='#!' class='secondary-content'> <div class='switch'> \
-                                                                            <label> \
-                                                                            Off \
-                                                                            <input type='checkbox' id='dev_" + list[i].id + "' " + checkedStr + "> \
-                                                                            <span class='lever'></span> \
-                                                                            On \
-                                                                            </label> \
-                                                                        </div></a> \
+                                <label> \
+                                Off \
+                                <input type='checkbox' id='dev_" + list[i].id + "' " + checkedStr + "> \
+                                <span class='lever'></span> \
+                                On \
+                                </label> \
+                            </div></a> \
+                            </li>";
+                    break;
+                case 2: // Veladores                    
+                    items += "<li class='collection-item avatar'> \
+                                <img src='images/velador.png' alt='' class='circle'> \
+                                <span class='title'>" + list[i].name + "</span> \
+                                <p>" + list[i].description + "<br> \
+                                </p> \
+                                <a href='#!' class='secondary-content'> <div class='switch'> \
+                                <label> \
+                                Off \
+                                <input type='checkbox' id='dev_" + list[i].id + "' " + checkedStr + "> \
+                                <span class='lever'></span> \
+                                On \
+                                </label> \
+                            </div></a> \
                             </li>";
                     break;
             }
