@@ -18,7 +18,6 @@ class MyFramework{
         return el;
     }
 
-
     getElementByEvent(evt:Event):HTMLElement
     {
         return <HTMLElement>evt.target;
@@ -73,7 +72,7 @@ class MyFramework{
         xhr.send(JSON.stringify(data));
     }
 
-    configClick(id: string, listener: EventListenerObject): void {
+    configClick(id: string, listener: EventListenerObject): void {      // Añadido de otro ejercicio de la practica
         let b: HTMLElement = this.getElementById(id);
         b.addEventListener("click", listener);
     }

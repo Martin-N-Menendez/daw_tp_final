@@ -2,7 +2,8 @@ class Main {
     handleEvent(evt) {
         let sw = this.myf.getElementByEvent(evt);
         console.log("Click en dispositivo:" + sw.id);
-        switch (sw.id) {
+        switch (sw.id) // Para cada boton hacemos un GET con un parametro distinto
+         {
             case "boton-lamparas":
                 this.myf.requestGET("devices?filter=0", this);
                 break;
@@ -41,7 +42,9 @@ class Main {
     main() {
         this.myf = new MyFramework();
         this.view = new ViewMainPage(this.myf);
+        // Cargando los datos
         this.myf.requestGET("devices", this);
+        // Agregando los botones y el comportamiento al clickear
         this.myf.configClick("boton-todos", this);
         this.myf.configClick("boton-lamparas", this);
         this.myf.configClick("boton-persianas", this);

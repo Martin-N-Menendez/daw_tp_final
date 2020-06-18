@@ -1,3 +1,5 @@
+// Separado del main del ejercicio_12 por comodidad
+
 interface DeviceInt{
     id:string;
     name:string;
@@ -15,9 +17,8 @@ class ViewMainPage
     }
 
     showDevices(list:DeviceInt[]):void
-    {
-        // cargo la lista de objetos en el DOM
-        let devicesUl:HTMLElement = this.myf.getElementById("devicesList");
+    { 
+        let devicesUl:HTMLElement = this.myf.getElementById("devicesList"); // cargo la lista de objetos en el DOM
 
         let items:string="";
         for(let i in list)

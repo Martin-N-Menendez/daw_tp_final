@@ -1,10 +1,10 @@
+// Separado del main del ejercicio_12 por comodidad
 class ViewMainPage {
     constructor(myf) {
         this.myf = myf;
     }
     showDevices(list) {
-        // cargo la lista de objetos en el DOM
-        let devicesUl = this.myf.getElementById("devicesList");
+        let devicesUl = this.myf.getElementById("devicesList"); // cargo la lista de objetos en el DOM
         let items = "";
         for (let i in list) {
             let checkedStr = "";
