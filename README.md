@@ -15,6 +15,7 @@ y luego en la misma carpeta ejecutar:
 ```sh
 docker-compose up
 ```
+ACLARACION IMPORTANTE: Docker esta implementado con "VALVULAS". Es necesario esperar que el sistema "caliente" antes de abrir la web, de lo contrario, se verá como si no hubiese ningùn dispositivo.
 
 ## Para dar de baja el docker-compose se debe ejecutar:
 
