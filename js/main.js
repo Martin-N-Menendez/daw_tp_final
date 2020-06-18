@@ -4,22 +4,22 @@ class Main {
         console.log("Click en dispositivo:" + sw.id);
         switch (sw.id) {
             case "boton-lamparas":
-                this.myf.requestGET("lamparas", this);
+                this.myf.requestGET("devices?filter=0", this);
                 break;
             case "boton-persianas":
-                this.myf.requestGET("persianas", this);
+                this.myf.requestGET("devices?filter=1", this);
                 break;
             case "boton-veladores":
-                this.myf.requestGET("veladores", this);
+                this.myf.requestGET("devices?filter=2", this);
                 break;
             case "boton-todos":
                 this.myf.requestGET("devices", this);
                 break;
             default:
-                let data = { "ID": sw.id, "Estado": this.view.getSwitchStateById(sw.id) };
+                let data = { "id": sw.id, "state": this.view.getSwitchStateById(sw.id) };
                 this.myf.requestPOST("devices", data, this);
         }
-        let data = { "ID": sw.id, "Estado": this.view.getSwitchStateById(sw.id) };
+        let data = { "id": sw.id, "state": this.view.getSwitchStateById(sw.id) };
         //console.log("Dispositivo:"+data);
         this.myf.requestPOST("devices", data, this);
     }

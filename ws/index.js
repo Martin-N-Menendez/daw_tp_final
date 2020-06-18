@@ -9,10 +9,29 @@ app.use(express.static('.')); // para servir archivos estaticos
 // Tipo = 0 -> nada
 // Tipo = 1 -> lamparas (en el json figuran como tipo 0)
 // Tipo = 2 -> persianas (n el json figuran como tipo 1)
+// Tipo = 3 -> persianas (n el json figuran como tipo 2)
 
 
 app.get('/devices', function(req, res, next) {
-    mysql.query('SELECT * FROM Devices', function(err, rta, field) {
+
+    var tipo = '';
+
+    switch (req.query.filter)
+    {
+        case '0':
+            tipo = ' WHERE type=0';
+            break;
+        case '1':
+            tipo = ' WHERE type=1';
+            break;
+        case '2':
+            tipo = ' WHERE type=2';
+            break;    
+        default:
+            break;
+    }
+
+    mysql.query('SELECT * FROM Devices ' + tipo , function (err, rta, field) {
         if (err) {
             res.send(err).status(400);
             return;
@@ -20,6 +39,7 @@ app.get('/devices', function(req, res, next) {
         res.send(rta).status(200);
     });
 });
+
 app.get('/devices/:id', function(req, res, next) {
     mysql.query('SELECT * FROM Devices WHERE id=?', [req.params.id], function(error, respuesta, field) {
         if (error) {
@@ -27,36 +47,6 @@ app.get('/devices/:id', function(req, res, next) {
             return;
         }
         res.send(respuesta);
-    });
-});
-
-app.get('/lamparas', function (req, res, next) {
-    mysql.query('SELECT * FROM Devices WHERE type=0', function (err, rta, field) {
-        if (err) {
-            res.send(err).status(400);
-            return;
-        }
-        res.send(rta).status(200);
-    });
-});
-
-app.get('/persianas', function (req, res, next) {
-    mysql.query('SELECT * FROM Devices WHERE type=1', function (err, rta, field) {
-        if (err) {
-            res.send(err).status(400);
-            return;
-        }
-        res.send(rta).status(200);
-    });
-});
-
-app.get('/veladores', function (req, res, next) {
-    mysql.query('SELECT * FROM Devices WHERE type=2', function (err, rta, field) {
-        if (err) {
-            res.send(err).status(400);
-            return;
-        }
-        res.send(rta).status(200);
     });
 });
 
