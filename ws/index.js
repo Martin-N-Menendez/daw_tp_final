@@ -16,18 +16,18 @@ app.get('/devices', function(req, res, next) {
 
     var tipo = '';
 
-    switch (req.query.filter)
+    switch (req.query.filter)       // De esta forma todos los botones particulares van a un caso y el "todos" termina en default que no agrega nada al query
     {
         case '0':
-            tipo = ' WHERE type=0';
+            tipo = ' WHERE type=0';     // Lamparas
             break;
         case '1':
-            tipo = ' WHERE type=1';
+            tipo = ' WHERE type=1';     // Persianas
             break;
         case '2':
-            tipo = ' WHERE type=2';
+            tipo = ' WHERE type=2';     // Veladores
             break;    
-        default:
+        default:                        // Todos
             break;
     }
 
@@ -37,16 +37,6 @@ app.get('/devices', function(req, res, next) {
             return;
         }
         res.send(rta).status(200);
-    });
-});
-
-app.get('/devices/:id', function(req, res, next) {
-    mysql.query('SELECT * FROM Devices WHERE id=?', [req.params.id], function(error, respuesta, field) {
-        if (error) {
-            res.send(error).status(400);
-            return;
-        }
-        res.send(respuesta);
     });
 });
 
@@ -62,7 +52,7 @@ app.post('/devices', function(req, res, next) {
 
     mysql.query('UPDATE Devices SET state=? WHERE id=?', [st, id], function(err, rta, field) {
         if (err) {
-            res.send(err).status(400);
+            res.send(err).status(400);server
             return;
         }
         res.send(JSON.stringify(req.body));
