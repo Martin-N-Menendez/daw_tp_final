@@ -3,7 +3,6 @@ cd src
 ./compile_ts.sh . ../js
 docker stop /ts_compiler
 
-
 # Cerrar todos los dockers activos
 docker stop $(docker ps -a -q)
 
