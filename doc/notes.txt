@@ -1,6 +1,6 @@
 MySQL.
 ○ Nombre de la imagen: mysql:5.7
-○ Nombre contenedor: mysql-db
+○ Nombre contenedor: mysql-server
 ○ Network: mysql-net
 ○ Variables de entorno: MYSQL_ROOT_PASSWORD: userpass
 ○ Puertos: -
@@ -20,6 +20,6 @@ PHPMyAdmin.
 ○ Nombre de la imagen: phpmyadmin/phpmyadmin
 ○ Nombre contenedor: phpmyadmin/phpmyadmin
 ○ Network: mysql-net
-○ Variables de entorno: mysql-db
+○ Variables de entorno: mysql-server
 ○ Puertos: 8085:80
 ○ Volumenes: -
