@@ -12,14 +12,18 @@ Node App.
 ○ Nombre de la imagen: nodejs-server
 ○ Nombre contenedor: webapp
 ○ Network: mysql-net
-○ Variables de entorno: 
-○ Puertos: 3000:8000
-○ Volumenes: -
+○ Variables de entorno: -
+○ Puertos: 8000:3000
+○ Volumenes: 
+    .:/home/node/app
 
 PHPMyAdmin.
 ○ Nombre de la imagen: phpmyadmin/phpmyadmin
 ○ Nombre contenedor: phpmyadmin/phpmyadmin
 ○ Network: mysql-net
-○ Variables de entorno: mysql-server
+○ Variables de entorno:
+    PMA_HOST: mysql-server
+    PMA_PORT: 3306
+    MYSQL_ROOT_PASSWORD: userpass
 ○ Puertos: 8085:80
 ○ Volumenes: -
